@@ -72,9 +72,9 @@ const TicketSelection = ({ setTicketData }) => {
               <Heading as="h3" size="lg">Techember Fest "25</Heading>
               <Text fontSize="16px" mb={2}>
                 Join us for an unforgettable experience at <br />
-                <strong>[Event Name]</strong>! Secure your spot now.
+                <strong>Techember Fest "25</strong>! Secure your spot now.
               </Text>
-              <Box>📍 [Event Location] &nbsp; || &nbsp; March 15, 2025 | 7:00 PM</Box>
+              <Box>📍 04 Rumens Road, Ikoyi, Lagos &nbsp; || &nbsp; March 15, 2025 | 7:00 PM</Box>
             </Box>
           </Box>
 
