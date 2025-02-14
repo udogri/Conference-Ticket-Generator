@@ -54,7 +54,7 @@ const GeneratedTicket = () => {
     <Layout>
       {/* Progress Bar Section */}
       
-      <Flex justify="space-between" px={{ base: 6, md: 12 }} w="75%">
+      <Flex justify="space-between" px={{ base: 6, md: 12 }} mt="80px" w="75%">
   <Text fontSize="xl" fontWeight="bold" mt={6} color="white">
     Ready
   </Text>
@@ -185,38 +185,55 @@ const GeneratedTicket = () => {
 
             {/* Table Container */}
             <Box border="1px solid #133D44" borderRadius="8px" overflow="hidden" p={4} color="white">
-      <Table variant="unstyled" size="sm">
-        <Tbody>
-          {/* First Field (Name & Email) */}
-          <Tr borderBottom="1px solid #133D44">
-            <Td fontWeight="bold" textAlign="center">Name</Td>
-            <Td fontWeight="bold" textAlign="center">Email</Td>
-          </Tr>
-          <Tr>
-            <Td textAlign="center" >{formData.fullName}</Td>
-            <Td textAlign="center">{formData.email}</Td>
-          </Tr>
-  
-          {/* Second Field (Ticket Type & Ticket For) */}
-          <Tr borderBottom="1px solid #133D44">
-            <Td fontWeight="bold" textAlign="center">Ticket Type</Td>
-            <Td fontWeight="bold" textAlign="center">Ticket For</Td>
-          </Tr>
-          <Tr>
-            <Td textAlign="center">{formData.ticketType || "VIP"}</Td>
-            <Td textAlign="center">{formData.ticketCount || 1}</Td>
-          </Tr>
-  
-          {/* Third Field (Special Request - Full Row) */}
-          <Tr borderBottom="1px solid #133D44" >
-            <Td fontWeight="bold" textAlign="center" colSpan={2} >Special Request</Td>
-          </Tr>
-          <Tr>
-            <Td textAlign="center" colSpan={2}>{formData.specialRequests || "Nil"}</Td>
-          </Tr>
-        </Tbody>
-      </Table>
-    </Box>
+  <Table variant="unstyled" size="sm">
+    <Tbody>
+      {/* First Field (Name & Email) */}
+      <Tr borderBottom="1px solid #133D44">
+        <Td fontWeight="bold" textAlign="center" display={{ base: 'none', md: 'table-cell' }}>Name</Td>
+        <Td fontWeight="bold" textAlign="center" display={{ base: 'none', md: 'table-cell' }}>Email</Td>
+      </Tr>
+      <Tr>
+        <Td textAlign="center" display={{ base: 'block', md: 'table-cell' }} mb={{ base: 2, md: 0 }}>
+          <Text fontWeight="bold">Name:</Text>
+          {formData.fullName}
+        </Td>
+        <Td textAlign="center" display={{ base: 'block', md: 'table-cell' }} mb={{ base: 2, md: 0 }}>
+          <Text fontWeight="bold">Email:</Text>
+          {formData.email}
+        </Td>
+      </Tr>
+
+      {/* Second Field (Ticket Type & Ticket For) */}
+      <Tr borderBottom="1px solid #133D44">
+        <Td fontWeight="bold" textAlign="center" display={{ base: 'none', md: 'table-cell' }}>Ticket Type</Td>
+        <Td fontWeight="bold" textAlign="center" display={{ base: 'none', md: 'table-cell' }}>Ticket For</Td>
+      </Tr>
+      <Tr>
+        <Td textAlign="center" display={{ base: 'block', md: 'table-cell' }} mb={{ base: 2, md: 0 }}>
+          <Text fontWeight="bold">Ticket Type:</Text>
+          {formData.ticketType || "VIP"}
+        </Td>
+        <Td textAlign="center" display={{ base: 'block', md: 'table-cell' }} mb={{ base: 2, md: 0 }}>
+          <Text fontWeight="bold">Ticket For:</Text>
+          {formData.ticketCount || 1}
+        </Td>
+      </Tr>
+
+      {/* Third Field (Special Request - Full Row) */}
+      <Tr borderBottom="1px solid #133D44">
+        <Td fontWeight="bold" textAlign="center" colSpan={2} display={{ base: 'none', md: 'table-cell' }}>
+          Special Request
+        </Td>
+      </Tr>
+      <Tr>
+        <Td textAlign="center" colSpan={2} display={{ base: 'block', md: 'table-cell' }} mb={{ base: 2, md: 0 }}>
+          <Text fontWeight="bold">Special Request:</Text>
+          {formData.specialRequests || "Nil"}
+        </Td>
+      </Tr>
+    </Tbody>
+  </Table>
+</Box>
           </Flex>
           
         
@@ -231,10 +248,8 @@ const GeneratedTicket = () => {
         {/* Barcode Section */}
         <Box mb={4}>
           <Flex justifyContent="center" alignItems="center" direction="column">
-            <Barcode value={generateUniqueNumber()} width={2} height={60} />
-            <Text mt={2} fontSize="md">
-              Ticket Number: {generateUniqueNumber()}
-            </Text>
+            <Barcode value={generateUniqueNumber()} width="1.5px" height={60} />
+            
           </Flex>
         </Box>
         </Box>

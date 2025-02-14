@@ -139,46 +139,55 @@ const UserForm = () => {
               mb={4}
             >
               <Box
-                w="240px"
-                h="240px"
-                border="4px solid #24A0B5"
-                borderRadius="32px"
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                flexDirection="column"
-                textAlign="center"
-                bg="#0E464F"
-                color="white"
-                cursor="pointer"
-                onClick={() => document.getElementById("avatar").click()}
-              >
-                {/* Display the upload icon and text only if avatar is not set */}
-                {!formData.avatar && !uploading && (
-                  <>
-                    <IoCloudDownloadOutline size={24} color="#ffff" />
-                    <Text fontSize="sm" mb={2}>
-                      Drag & drop or click to upload
-                    </Text>
-                  </>
-                )}
-                <input
-                  id="avatar"
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  style={{ display: "none" }}
-                />
-                {uploading && <Spinner size="sm" color="blue.500" mt={2} />}
-                {formData.avatar && (
-                  <Image
-                    src={formData.avatar}
-                    alt="Avatar Preview"
-                    w="100%"
-                    
-                  />
-                )}
-              </Box>
+  w="240px"
+  h="240px"
+  border="4px solid #24A0B5"
+  borderRadius="32px"
+  display="flex"
+  justifyContent="center"
+  alignItems="center"
+  flexDirection="column"
+  textAlign="center"
+  bg="#0E464F"
+  color="white"
+  cursor="pointer"
+  onClick={() => document.getElementById("avatar").click()}
+  position="relative" // Important: Add position relative
+>
+  {/* Conditional Rendering */}
+  {!formData.avatar && !uploading && ( // Show upload icon and text
+    <>
+      <IoCloudDownloadOutline size={24} color="#ffff" />
+      <Text fontSize="sm" mb={2}>
+        Drag & drop or click to upload
+      </Text>
+    </>
+  )}
+
+  {uploading && <Spinner size="sm" color="blue.500" mt={2} />}
+
+  {formData.avatar && ( // Show image, hide icon and text
+    <Image
+      src={formData.avatar}
+      alt="Avatar Preview"
+      w="100%"
+      h="100%"
+      objectFit="cover"
+      position="absolute" // Position the image on top
+      top={0}
+      left={0}
+      borderRadius="inherit" // Inherit the border radius from the parent
+    />
+  )}
+
+  <input
+    id="avatar"
+    type="file"
+    accept="image/*"
+    onChange={handleImageUpload}
+    style={{ display: "none" }}
+  />
+</Box>
             </HStack>
 
             <Divider mt="50px" mb="32px" borderColor="#07373F" borderWidth="2px" borderStyle="solid" />

@@ -6,10 +6,12 @@ import { ChakraProvider } from '@chakra-ui/react'
 import Navbar from './components/Navbar.jsx'
 
 
+
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ChakraProvider>
-      <Navbar  mb={4}/>
+      <Navbar  />
     <App />
     </ChakraProvider>
   </StrictMode>,
